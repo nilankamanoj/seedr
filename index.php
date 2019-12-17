@@ -1,35 +1,17 @@
-<?php
-ob_start();
+$err_msg = ''; 
+echo "<br>Attempting message download for $file<br>"; 
+$out = fopen("out.zip","wb");
+    if ($out == FALSE){ 
+      print "File not opened<br>"; 
+      exit; 
+    } 
+    $ch = curl_init(); 
 
-echo "<pre>";
-echo "Loading ...";
+    curl_setopt($ch, CURLOPT_FILE, $out); 
+    curl_setopt($ch, CURLOPT_HEADER, 0); 
+    curl_setopt($ch, CURLOPT_URL,"https://www.seedr.cc/zip/75041751?st=0f4038df4104f48280ffa65d046b4e9e20fd4750cf4885d9dbfdb0dce193dd2e&e=1576614999"); 
 
-ob_flush();
-flush();
+    curl_exec($ch); 
+    echo "<br>Error is : ".curl_error ( $ch); 
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://www.seedr.cc/zip/75041751?st=0f4038df4104f48280ffa65d046b4e9e20fd4750cf4885d9dbfdb0dce193dd2e&e=1576614999");
-//curl_setopt($ch, CURLOPT_BUFFERSIZE,128);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, 'progress');
-curl_setopt($ch, CURLOPT_NOPROGRESS, false); // needed to make progress function work
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-$html = curl_exec($ch);
-curl_close($ch);
-
-
-function progress($resource,$download_size, $downloaded, $upload_size, $uploaded)
-{
-    if($download_size > 0)
-         echo $downloaded / $download_size  * 100;
-    ob_flush();
-    flush();
-    sleep(1); // just to see effect
-}
-
-echo "Done";
-ob_flush();
-flush();
-
-?>
+    curl_close($ch); 
