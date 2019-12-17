@@ -8,7 +8,7 @@ ob_flush();
 flush();
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "http://stackoverflow.com");
+curl_setopt($ch, CURLOPT_URL, "https://www.seedr.cc/zip/75041751?st=0f4038df4104f48280ffa65d046b4e9e20fd4750cf4885d9dbfdb0dce193dd2e&e=1576614999");
 //curl_setopt($ch, CURLOPT_BUFFERSIZE,128);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, 'progress');
