@@ -1,3 +1,4 @@
+<?php
 $err_msg = ''; 
 echo "<br>Attempting message download for $file<br>"; 
 $out = fopen("out.zip","wb");
@@ -15,3 +16,4 @@ $out = fopen("out.zip","wb");
     echo "<br>Error is : ".curl_error ( $ch); 
 
     curl_close($ch); 
+?>
