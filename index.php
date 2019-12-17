@@ -9,7 +9,7 @@ curl_setopt($ch, CURLOPT_HEADER, 0);
 
 // grab URL and pass it to the browser
 $out = curl_exec($ch);
-
+echo $out;
 // close cURL resource, and free up system resources
 curl_close($ch);
 
